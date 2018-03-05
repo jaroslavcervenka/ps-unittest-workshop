@@ -18,7 +18,7 @@ function Invoke-Cleanup{
         [string] $PathToFolder
     )
 
-    $files = Get-ChildItem -Path $PathToFolder -File -Recurse | Select-Object FullName 
+    $files = Get-ChildItem -Path $PathToFolder -File -Recurse | ForEach-Object {$.FullName}
 
     Remove-Cache
     Remove-FileArray -Files $files    
